@@ -12,7 +12,7 @@ let gridSize = 0;
 const inputBtn = document.getElementById('input');
 
 function getInput() { // prompt user for grid size, check to make sure value is within parameters of code
-    input = prompt("How many squares per side would you like to draw on? Please enter a number between 1-100")
+    input = Math.round(prompt("How many squares per side would you like to draw on? Please enter a number between 1-100"));
     if (isNaN(input)) {
         alert("Please enter a number between 1-100");
         return;
@@ -21,8 +21,8 @@ function getInput() { // prompt user for grid size, check to make sure value is 
         return;
     } else {
         gridSize = input;
+        return gridSize;
     }
-
 }
 
 // function checkNumber() {
@@ -31,8 +31,9 @@ function getInput() { // prompt user for grid size, check to make sure value is 
 
 // SAVED FOR LATER when requesting grid size with getInput function, save the value and use it to rewrite grid CSS repeat()
 
-function drawGrid() {
-    for (i = 0; i < 16; i++) {
+function drawGrid(size) {
+    gridContainer.style.cssText = `grid-template-columns: repeat(${size}, 1fr);`
+    for (i = 0; i < size; i++) {
         let pixel = document.createElement('div');
         pixel.className = "pixel";
         gridContainer.appendChild(pixel);
@@ -41,4 +42,7 @@ function drawGrid() {
 
 drawGrid();
 
-inputBtn.addEventListener('click', getInput);
+inputBtn.addEventListener('click', function(e) {
+    getInput();
+    drawGrid(gridSize);
+});
