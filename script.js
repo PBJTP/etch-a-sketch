@@ -3,7 +3,6 @@ function drawGrid() {
         let pixel = document.createElement('div');
         pixel.className = "pixel";
         gridContainer.appendChild(pixel);
-        pixel.innerHTML = "stuff";
     }
 }
 

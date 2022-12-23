@@ -1,9 +1,21 @@
 #gridContainer {
+    height: 500px;
+    width: 500px;
     display: grid;
-    grid-auto-rows: 50px;
+    grid-template-columns: 25% 25% 25% 25%;
+    padding: 0px;
+    margin: 0px;
+    align-items: center;
+    justify-items: center;
 }
 
 .pixel {
-    height: 50px;
-    width: 50px;
+    height: 100%;
+    width: 100%;
+    margin: 0px;
+    padding: 0px;
+}
+
+.pixel:hover {
+    background-color: black;
 }
