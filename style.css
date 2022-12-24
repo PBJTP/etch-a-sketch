@@ -16,7 +16,11 @@
     padding: 0px;
 }
 
-.pixel:hover {
+/* .pixel:hover {
+    background-color: black;
+} */
+
+.pixelHover {
     background-color: black;
 }
 

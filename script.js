@@ -10,6 +10,7 @@
 
 let gridSize = 0;
 const inputBtn = document.getElementById('input');
+const pixel = document.querySelector('class', 'pixel');
 
 function getInput() { // prompt user for grid size, check to make sure value is within parameters of code
     input = Math.round(prompt("How many squares per side would you like to draw on? Please enter a number between 1-100"));
@@ -32,6 +33,9 @@ function drawGrid(size) {
     for (i = 0; i < (size * size); i++) {
         let pixel = document.createElement('div');
         pixel.className = "pixel";
+        pixel.addEventListener('mouseover', function(e) {
+            pixel.className = 'pixelHover';
+        });
         gridContainer.appendChild(pixel);
     }
 };
@@ -41,6 +45,8 @@ function removeGrid() {
         gridContainer.removeChild(gridContainer.firstChild);
     }
 };
+
+
 
 inputBtn.addEventListener('click', function(e) {
     gridSize = 0;
