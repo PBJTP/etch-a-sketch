@@ -4,7 +4,7 @@
 //use CSS grid to make sure the divs are laid out in a grid pattern
 //add a hover effect to each div
 //use javascript to change the css properties of each div that is hovered over with the mouse
-//POTENTIALLY MAKE IT SO THE USE ALSO HAS TO HOLD LEFT CLICK
+//POTENTIALLY MAKE IT SO THE USER ALSO HAS TO HOLD LEFT CLICK
 
 
 
@@ -23,26 +23,28 @@ function getInput() { // prompt user for grid size, check to make sure value is 
         gridSize = input;
         return gridSize;
     }
-}
+};
 
-// function checkNumber() {
-//     if inp
-// }
-
-// SAVED FOR LATER when requesting grid size with getInput function, save the value and use it to rewrite grid CSS repeat()
+// REMEMBER FOR LATER when requesting grid size with getInput function, save the value and use it to rewrite grid CSS repeat()
 
 function drawGrid(size) {
     gridContainer.style.cssText = `grid-template-columns: repeat(${size}, 1fr);`
-    for (i = 0; i < size; i++) {
+    for (i = 0; i < (size * size); i++) {
         let pixel = document.createElement('div');
         pixel.className = "pixel";
         gridContainer.appendChild(pixel);
     }
-}
+};
 
-drawGrid();
+function removeGrid() {
+    while (gridContainer.firstChild) {
+        gridContainer.removeChild(gridContainer.firstChild);
+    }
+};
 
 inputBtn.addEventListener('click', function(e) {
+    gridSize = 0;
+    removeGrid();
     getInput();
     drawGrid(gridSize);
 });
